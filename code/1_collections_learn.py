@@ -1,5 +1,5 @@
 # 列表
-my_list = []
+my_list: list = []
 my_list.append(0)
 my_list.append("sdfs") # 指点中的元素可以是不用类型
 print(my_list)
@@ -28,9 +28,9 @@ print(my_dic.get("birthday", "null")) # 不会报错，不存在就得这种使�
 print(my_dic["birthday"]) # KeyError: 'birthday'
 
 
-my_set = {}
-print(type(my_set)) # 创建的是空字典，而不是空集合
-my_set = set() # 只有这种创建空集合的方式
+my_dict: dict = {}  # 创建的是空字典
+print(type(my_dict)) # 创建的是空字典，而不是空集合
+my_set: set[str] = set() # 只有这种创建空集合的方式
 print(type(my_set))
 
 my_set.add("sdfsdf")
