@@ -5,12 +5,24 @@ from com_utils import process_time_async
 # 协程和多线程的区别，主要在于两点，
 # 一是协程为单线程；
 # 二是协程由用户判断，在哪些地方（阻塞）交出控制权，在哪些地方（操作共享数据）要一直执行到底
+# 三协程需要第三方库的支持
+# 协程一般用在 IO 密集型任务上，既然多个任务的 IO 占比高, cpu 计算要求自然就低，
+# 单线程足以满足计算需求，无需多线程或多进程，而且不用上下文切换
+
+# asyncio原理：
+# 所有协程由一个event_loop对象管理，event_loop负责具有执行控制权,
+# 还维护了就绪队列和阻塞队列，就绪队列中存放所有准备执行的协程，
+# 阻塞队列中存放所有被阻塞的协程，当一个协程被阻塞时，会被放入阻塞队列中，
+# 当一个协程的 IO 操作完成时，会被放入就绪队列中，等待 event_loop 调用
+
 
 # 声明为异步函数
 async def crawl_page(url):
     print('crawling {}'.format(url))
     sleep_time = int(url.split('_')[-1])
-    # await 表示同步执行
+    # await 表示要一直等待这个协程执行结束，此时当前协程被堵塞，放入阻塞队列中,
+    # 然后执行 asyncio.sleep 这个协程，这个协程序执行需要阻塞，又把这个协程放入阻塞队列中,
+    # 然后 event_loop 从就绪队列中调用下一个协程
     await asyncio.sleep(sleep_time)
     print('OK {}'.format(url))
 

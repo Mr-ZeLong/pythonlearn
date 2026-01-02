@@ -2,6 +2,16 @@ import time
 import functools
 
 
+def process_time(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        func(*args, **kwargs)
+        end = time.time()
+        print('耗时: {:.2f} 秒'.format(end - start))
+    return wrapper
+
+
 # 装饰器，用于测量异步函数的执行时间
 def process_time_async(func):
     @functools.wraps(func)
