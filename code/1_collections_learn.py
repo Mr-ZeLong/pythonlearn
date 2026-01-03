@@ -2,6 +2,7 @@
 my_list: list = []
 my_list.append(0)
 my_list.append("sdfs") # 指点中的元素可以是不用类型
+my_list.pop()
 print(my_list)
 
 # 元组不可修改
@@ -15,7 +16,8 @@ empty_dic: dict[str, int] = {}
 d1 = {'name': 'jason', 'age': 20, 'gender': 'male'}
 d2 = dict({'name': 'jason', 'age': 20, 'gender': 'male'})
 d3 = dict([('name', 'jason'), ('age', 20), ('gender', 'male')])
-d4 = dict(name='jason', age=20, gender='male') 
+d4 = dict(name='jason', age=20, gender='male')
+
 print(d1 == d2 == d3 == d4) # True
 
 my_dic = {"name":"呆瓜", "age":20}
