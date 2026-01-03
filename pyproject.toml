@@ -2,21 +2,18 @@
 name = "pythonlearn"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Mr-ZeLong",email = "473840782@qq.com"}
-]
-readme = "README.md"
+authors = [{ name = "Mr-ZeLong", email = "473840782@qq.com" }]
 requires-python = ">=3.12"
+readme = "README.md"
 dependencies = [
     "types-psutil (>=7.2.1.20251231,<8.0.0.0)",
     "requests (>=2.32.5,<3.0.0)",
-    "types-requests (>=2.32.4.20250913,<3.0.0.0)"
+    "types-requests (>=2.32.4.20250913,<3.0.0.0)",
 ]
 
-
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry]
-package-mode = false
+[tool.uv]
+package = false
